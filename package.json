@@ -1,0 +1,79 @@
+{
+  "name": "psharp",
+  "displayName": "P# Shell Language",
+  "description": "Language support for P# - The modern shell scripting language",
+  "version": "0.1.0",
+  "publisher": "thomasrayner",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers"
+  ],
+  "keywords": [
+    "shell",
+    "scripting",
+    "powershell",
+    "bash"
+  ],
+  "activationEvents": [
+    "onLanguage:psharp"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "psharp",
+        "aliases": [
+          "P#",
+          "psharp"
+        ],
+        "extensions": [
+          ".ps"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "psharp",
+        "scopeName": "source.psharp",
+        "path": "./syntaxes/psharp.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "psharp.executeFile",
+        "title": "Execute P# File"
+      },
+      {
+        "command": "psharp.executeSelection",
+        "title": "Execute P# Selection"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "psharp.executeFile",
+        "key": "ctrl+shift+r",
+        "when": "editorLangId == psharp"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "test": "node ./dist/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.75.0",
+    "esbuild": "^0.19.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.0"
+  }
+}

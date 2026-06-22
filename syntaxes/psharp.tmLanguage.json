@@ -1,0 +1,109 @@
+{
+  "name": "P#",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#brackets"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.psharp",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.psharp",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.psharp",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.psharp",
+          "begin": "'",
+          "end": "'"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.psharp",
+          "match": "\\b[0-9]+\\.?[0-9]*\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.psharp",
+          "match": "\\b(if|else|while|for|break|continue|return|match)\\b"
+        },
+        {
+          "name": "keyword.declaration.psharp",
+          "match": "\\b(let|fn|def)\\b"
+        },
+        {
+          "name": "constant.language.psharp",
+          "match": "\\b(true|false|null)\\b"
+        },
+        {
+          "name": "keyword.operator.psharp",
+          "match": "\\b(and|or|not|in)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.psharp",
+          "match": "\\b(print|echo|len|type|keys|values|range|join|split|trim|upper|lower|reverse|sort|sum|min|max|abs|floor|ceil|round|sqrt|pow|contains|starts_with|ends_with|replace|read_file|write_file|exec|exists|ls)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.psharp",
+          "match": "(\\+|-|\\*|/|%|\\*\\*|==|!=|<|<=|>|>=|=|\\||&&|\\|\\|)"
+        }
+      ]
+    },
+    "brackets": {
+      "patterns": [
+        {
+          "name": "meta.brace.psharp",
+          "match": "[\\{\\}\\[\\]\\(\\)]"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.psharp"
+}
